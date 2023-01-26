@@ -28,7 +28,7 @@ if($statement->execute()){
 }
 mysqli_close($conn);
 $pswHashed=password_hash($_SESSION["heslo2"],PASSWORD_DEFAULT);
-$url = "http://127.0.0.1/cernohous/langlet/index1.php?reg=1&email=".$_SESSION["email2"]."&psw=".$pswHashed;
+$url = "http://127.0.0.1/cernohous/Langlet/langlet/index1.php?reg=1&email=".$_SESSION["email2"]."&psw=".$pswHashed;
 session_destroy();
 header("Location: ".$url);
    

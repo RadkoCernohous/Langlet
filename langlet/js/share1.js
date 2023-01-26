@@ -12,19 +12,22 @@ const btnupdate = document.getElementById("update");
 
 let errorKontejner = document.getElementById("errorKontejner");
 
-if (kontejner2.value) {
-  if (kontejner2.value !== "") {
-    let dataZdroj = kontejner1.value;
-    dataZdroj = dataZdroj.replaceAll("\'", "\"");
-    dataZdroj = JSON.parse(dataZdroj);
+let error1 = false;
+let typ = kontejner3.value;
+let jazyk = kontejner4.value;
+let lekce = kontejner5.value;
+let dataZdroj = kontejner1.value;
+let jazykPridany = kontejner4.value;s
+dataZdroj = dataZdroj.replaceAll("\'", "\"");
+dataZdroj = JSON.parse(dataZdroj);
+
+
+
+  if (kontejner2.value) {
     let data = kontejner2.value;
     data = data.replaceAll("\'", "\"");
     data = JSON.parse(data);
     console.log(data);
-    let typ = kontejner3.value;
-    let jazyk = kontejner4.value;
-    let lekce = kontejner5.value;
-    let error1 = false;
     if (typ == "language") {
       let umisteni = false;
       while (!umisteni) {
@@ -35,9 +38,11 @@ if (kontejner2.value) {
           umisteni = true;
         }
       }
-      let jazykPridany = kontejner4.value;
       try {
         data.slovicka[jazyk] = dataZdroj.slovicka[jazykPridany];
+        if(typeof dataZdroj.slovicka[jazykPridany]=="undefined"){
+          error1=true;
+        }
       }
       catch {
         error1 = true;
@@ -62,12 +67,15 @@ if (kontejner2.value) {
       let lekcePridana = kontejner5.value;
       try {
         data.slovicka[jazyk][lekce] = dataZdroj.slovicka[jazyk][lekcePridana];
+        if( typeof dataZdroj.slovicka[jazyk][lekcePridana]=="undefined"){
+          error1=true;
+        }
       }
       catch {
         error1 = true;
       }
 
-    }
+    } 
     if (error1 == false) {
       data = JSON.stringify(data);
       kontejner6.setAttribute("value", data);
@@ -77,6 +85,6 @@ if (kontejner2.value) {
       errorKontejner.textContent = `Unfortunately, this ${typ} doesn´t exist anymore`;
       errorKontejner.hidden = false;
     }
+    console.log(error1);
 
   }
-}

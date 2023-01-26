@@ -902,7 +902,7 @@ class Aplikace {
     if (jazyk == "jazyk") {
       return
     }
-    let link = `127.0.0.1/cernohous/langlet/HTMLshare.php?id=${schovanyKontejner2.value}&`;
+    let link = `127.0.0.1/cernohous/Langlet/langlet/HTMLshare.php?id=${schovanyKontejner2.value}&`;
     if (sdileniTypJazyk.checked == true) {
       link += `type=language&language=${jazyk}&lesson=""&name=${this.#prihlasenyUzivatel.jmeno}`;
       btnKopirovatLink.hidden = false;

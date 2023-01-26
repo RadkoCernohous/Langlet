@@ -31,10 +31,7 @@ $dtbsName="bettertest";
 session_start();
 $correctDetails=true;
 $dataImport=true;
-if(!isset($_SESSION["prihlaseno"])){
-  $_SESSION["prihlaseno"]=false;
-}
-
+$_SESSION["prihlaseno"]=false;
 $message = "You entered nothing!";
 
 if(isset($_REQUEST["id"]) and isset($_REQUEST["type"]) and isset($_REQUEST["language"]) and isset($_REQUEST["lesson"]) and isset($_REQUEST["name"])){
